@@ -49,12 +49,6 @@ export function Rooms() {
   return (
     <section className="rooms" ref={root} id="rooms">
       <div className="shell">
-        <p className="eyebrow">Four rooms</p>
-        <h2 className="rooms__lead">
-          Wander in. Each room keeps its own&nbsp;
-          <span className="rooms__lead-accent">light</span>.
-        </h2>
-
         <div className="rooms__grid">
           {ROOMS.map((room) => (
             <a className="room" href={room.href} key={room.title}>
