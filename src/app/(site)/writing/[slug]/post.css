@@ -1,0 +1,86 @@
+/* Palm-leaf reading mode — warm paper ground, Pattachitra-style framing. */
+.reader-bg {
+  background: var(--bg); /* conch, via .leaf */
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.reader {
+  max-width: 72ch;
+  padding-top: clamp(7rem, 14vh, 11rem);
+  padding-bottom: var(--section-y);
+}
+
+.reader__head {
+  margin: 2rem 0 2.5rem;
+}
+.reader__date {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+.reader__title {
+  font-size: var(--step-3);
+  margin: 0.6rem 0 0;
+  letter-spacing: -0.02em;
+}
+
+/* a small Pattachitra-style ornamental rule: three lozenges on a line */
+.reader__rule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1.6rem;
+}
+.reader__rule span {
+  height: 1px;
+  background: var(--accent-warm);
+  flex: 1;
+}
+.reader__rule span:nth-child(2) {
+  flex: 0 0 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--accent);
+}
+
+.reader__body {
+  font-family: var(--font-body);
+  font-size: var(--step-1);
+  line-height: 1.75;
+}
+.reader__body > * + * {
+  margin-top: 1.4rem;
+}
+.reader__body h2 {
+  font-size: var(--step-2);
+  margin-top: 2.6rem;
+}
+.reader__body h3 {
+  font-size: var(--step-1);
+  margin-top: 2rem;
+}
+.reader__body a {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent-warm);
+}
+.reader__body blockquote {
+  border-left: 3px solid var(--accent-warm);
+  padding-left: 1.2rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+.reader__body ul,
+.reader__body ol {
+  padding-left: 1.4rem;
+}
+.reader__body li + li {
+  margin-top: 0.5rem;
+}
+.rt-figure {
+  margin: 2rem 0;
+}
+.rt-figure img {
+  border-radius: var(--radius);
+}

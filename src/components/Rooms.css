@@ -1,0 +1,69 @@
+.rooms {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--line);
+}
+
+.rooms__lead {
+  font-size: var(--step-3);
+  max-width: 16ch;
+  margin: 0.6rem 0 clamp(2.5rem, 6vh, 4.5rem);
+}
+.rooms__lead-accent {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.rooms__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.room {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  background: var(--bg);
+  transition: background 0.4s var(--ease-out);
+  min-height: 280px;
+}
+.room:hover {
+  background: var(--bg-raised);
+}
+
+.room__motif {
+  width: 44px;
+  height: 44px;
+}
+.room:hover .room__motif path {
+  stroke: var(--accent);
+  transition: stroke 0.4s var(--ease-out);
+}
+
+.room__title {
+  font-size: var(--step-2);
+}
+
+.room__blurb {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  max-width: 32ch;
+}
+
+.room__go {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  transform: translateX(0);
+  transition: transform 0.35s var(--ease-out);
+}
+.room:hover .room__go {
+  transform: translateX(6px);
+}

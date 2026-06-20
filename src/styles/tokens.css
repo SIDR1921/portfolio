@@ -1,0 +1,54 @@
+:root {
+  /* ── Pigment palette (geru / conch / lamp-black / turmeric / indigo) ──
+     Inspired by Odisha's natural-pigment traditions. Representative, not
+     a canonical fixed palette (the "fixed five-colour" claim is a myth). */
+  --ink: #1a1411; /* lamp-black — primary ground */
+  --ink-soft: #241c17; /* raised surfaces on the dark ground */
+  --conch: #f4ece0; /* conch / rice-paste white — primary text on dark */
+  --conch-dim: #c9bca9; /* muted text on dark */
+  --terracotta: #b5532a;
+  --geru: #a23b26; /* deep red-ochre */
+  --turmeric: #e2a739; /* accent / the Konark wheel */
+  --indigo: #2e3a5c; /* cool counterpoint */
+
+  /* ── Semantic roles (dark mode is the default canvas) ── */
+  --bg: var(--ink);
+  --bg-raised: var(--ink-soft);
+  --text: var(--conch);
+  --text-muted: var(--conch-dim);
+  --accent: var(--turmeric);
+  --accent-warm: var(--terracotta);
+  --line: rgba(244, 236, 224, 0.14); /* hairline on dark */
+
+  /* ── Type ── */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* fluid type scale */
+  --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 0.95rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.13rem);
+  --step-1: clamp(1.33rem, 1.2rem + 0.65vw, 1.75rem);
+  --step-2: clamp(1.77rem, 1.5rem + 1.4vw, 2.75rem);
+  --step-3: clamp(2.37rem, 1.85rem + 2.6vw, 4.3rem);
+  --step-4: clamp(3.15rem, 2.1rem + 5.2vw, 7rem);
+  --step-5: clamp(4rem, 2rem + 9vw, 10rem);
+
+  /* ── Rhythm ── */
+  --measure: 66ch;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --section-y: clamp(5rem, 12vh, 11rem);
+  --radius: 4px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* "Palm-leaf" mode — the warm paper ground used for reading/blog sections */
+.leaf {
+  --bg: var(--conch);
+  --bg-raised: #fbf6ec;
+  --text: var(--ink);
+  --text-muted: #6b5d4c;
+  --accent: var(--geru);
+  --accent-warm: var(--terracotta);
+  --line: rgba(26, 20, 17, 0.16);
+}

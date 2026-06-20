@@ -1,0 +1,262 @@
+/* ── Shared layout for inner pages (/work, /writing, /about) ── */
+.page {
+  min-height: 100vh;
+  padding-top: clamp(7rem, 14vh, 11rem);
+  padding-bottom: var(--section-y);
+}
+
+/* gentle entrance — CSS-only so content always resolves visible; the global
+   prefers-reduced-motion rule collapses these to an instant show. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page__head {
+  animation: rise 0.7s var(--ease-out) both;
+}
+.work-card,
+.post-row,
+.timeline__item,
+.about__prose,
+.about aside {
+  animation: rise 0.6s var(--ease-out) both;
+}
+.work-card:nth-child(2),
+.post-row:nth-child(2) {
+  animation-delay: 0.06s;
+}
+.work-card:nth-child(3),
+.post-row:nth-child(3) {
+  animation-delay: 0.12s;
+}
+.work-card:nth-child(4),
+.post-row:nth-child(4) {
+  animation-delay: 0.18s;
+}
+.work-card:nth-child(n + 5),
+.post-row:nth-child(n + 5) {
+  animation-delay: 0.24s;
+}
+.about aside {
+  animation-delay: 0.1s;
+}
+
+.page__head {
+  margin-bottom: clamp(2.5rem, 7vh, 5rem);
+}
+.page__title {
+  font-size: var(--step-4);
+  margin: 0.5rem 0 0;
+}
+.page__lead {
+  margin-top: 1.4rem;
+  max-width: 54ch;
+  color: var(--text-muted);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  transition: color 0.3s var(--ease-out);
+}
+.back-link:hover {
+  color: var(--accent);
+}
+
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+.empty code {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.9em;
+}
+
+/* ── /work ── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--bg);
+  transition: background 0.4s var(--ease-out);
+}
+.work-card:hover {
+  background: var(--bg-raised);
+}
+.work-card__meta {
+  display: flex;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--accent);
+}
+.work-card__title {
+  font-size: var(--step-2);
+}
+.work-card__summary {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.6;
+}
+.work-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+.work-card__links {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+.work-card__links a {
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+}
+.work-card__links a:hover {
+  border-color: var(--accent);
+}
+
+/* ── /writing (list) ── */
+.post-list {
+  border-top: 1px solid var(--line);
+}
+.post-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.5rem;
+  padding: clamp(1.6rem, 3.5vw, 2.4rem) 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+  transition: padding-left 0.35s var(--ease-out);
+}
+.post-row:hover {
+  padding-left: 0.75rem;
+}
+.post-row__date {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+.post-row__title {
+  font-size: var(--step-2);
+  margin: 0 0 0.4rem;
+}
+.post-row:hover .post-row__title {
+  color: var(--accent);
+}
+.post-row__excerpt {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  max-width: 60ch;
+}
+@media (max-width: 620px) {
+  .post-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* ── /about ── */
+.about {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+@media (max-width: 820px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+.about__prose p {
+  margin-bottom: 1.1rem;
+  max-width: 56ch;
+  line-height: 1.7;
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.status__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+.status--open .status__dot {
+  background: #5fd08a;
+  box-shadow: 0 0 0 4px rgba(95, 208, 138, 0.18);
+}
+
+.timeline {
+  border-top: 1px solid var(--line);
+}
+.timeline__item {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.timeline__when {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.timeline__role {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  margin: 0.3rem 0 0.2rem;
+}
+.timeline__co {
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+.timeline__summary {
+  margin-top: 0.6rem;
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  max-width: 52ch;
+}
