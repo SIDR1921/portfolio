@@ -4,6 +4,8 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  /* clear the fixed nav at the top, breathe at the bottom */
+  padding-block: clamp(6.5rem, 15vh, 10rem) clamp(3rem, 8vh, 5rem);
 }
 
 /* the Konark wheel sits behind the type, bleeding off the right edge */
@@ -11,10 +13,10 @@
   position: absolute;
   top: 50%;
   right: clamp(-32vw, -18vw, -8rem);
-  width: min(98vh, 920px);
+  width: min(92vh, 880px);
   aspect-ratio: 1;
   transform: translateY(-50%);
-  opacity: 0.92;
+  opacity: 0.9;
   pointer-events: none;
 }
 .hero__wheel svg {
@@ -27,13 +29,8 @@
   z-index: 1;
 }
 
-.hero__eyebrow {
-  display: block;
-  margin-bottom: clamp(1.2rem, 3vh, 2.4rem);
-}
-
 .hero__title {
-  font-size: var(--step-5);
+  font-size: var(--step-4);
   font-weight: 600;
   letter-spacing: -0.03em;
   margin: 0;
@@ -43,32 +40,38 @@
 .hero__line-wrap {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.04em;
+  padding-bottom: 0.08em;
 }
 .hero__line {
   display: block;
 }
-.hero__line--accent {
+
+/* the guiding quote, set as an editorial tagline */
+.hero__quote {
+  font-family: var(--font-display);
   font-style: italic;
+  font-size: var(--step-2);
   font-weight: 400;
+  line-height: 1.15;
+  color: var(--text);
+  max-width: 18ch;
+  margin-top: clamp(1.2rem, 3vh, 2rem);
+}
+.hero__quote-accent {
   color: var(--accent);
+  font-style: italic;
 }
 
 .hero__frieze {
   margin-top: clamp(2rem, 5vh, 3.5rem);
-  max-width: 520px;
-}
-
-.hero__cue {
-  margin-top: clamp(1.5rem, 4vh, 3rem);
-  color: var(--text-muted);
+  max-width: 460px;
 }
 
 @media (max-width: 720px) {
   .hero__wheel {
-    right: -38vw;
+    right: -40vw;
     width: 120vw;
-    opacity: 0.5;
+    opacity: 0.45;
   }
   .hero__frieze {
     max-width: 100%;

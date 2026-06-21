@@ -25,6 +25,15 @@ export function Hero() {
         delay: 0.15,
       });
 
+      // the quote fades up just after the name
+      gsap.from(".hero__quote", {
+        opacity: 0,
+        y: 18,
+        duration: 1,
+        ease: "power2.out",
+        delay: 0.7,
+      });
+
       // Saura frieze draws itself in, frame first then figures
       gsap.set(".saura-stroke", { strokeDasharray: 1, strokeDashoffset: 1 });
       gsap.to(".saura-stroke", {
@@ -64,13 +73,12 @@ export function Hero() {
           <span className="hero__line-wrap">
             <span className="hero__line">Siddharth Ray.</span>
           </span>
-          <span className="hero__line-wrap">
-            <span className="hero__line">I build &amp;</span>
-          </span>
-          <span className="hero__line-wrap">
-            <span className="hero__line hero__line--accent">write things.</span>
-          </span>
         </h1>
+
+        <p className="hero__quote">
+          “Simplicity is the ultimate{" "}
+          <em className="hero__quote-accent">sophistication</em>.”
+        </p>
 
         <div className="hero__frieze" aria-hidden="true">
           <SauraFrieze />
