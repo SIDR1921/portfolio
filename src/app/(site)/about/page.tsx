@@ -48,15 +48,11 @@ export default async function AboutPage() {
           )}
         </div>
 
-        <aside>
-          <p className="eyebrow" style={{ marginBottom: "1rem" }}>
-            Career
-          </p>
-          {jobs.length === 0 ? (
-            <div className="empty">
-              Add roles in <code>/studio</code> → <code>Jobs / roles</code>.
-            </div>
-          ) : (
+        {jobs.length > 0 && (
+          <aside>
+            <p className="eyebrow" style={{ marginBottom: "1rem" }}>
+              Career
+            </p>
             <div className="timeline">
               {jobs.map((job) => (
                 <div className="timeline__item" key={job._id}>
@@ -81,8 +77,8 @@ export default async function AboutPage() {
                 </div>
               ))}
             </div>
-          )}
-        </aside>
+          </aside>
+        )}
       </div>
     </main>
   );

@@ -21,23 +21,28 @@ export function WheelDivider({ label }: { label?: string }) {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: root.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
+      const mm = gsap.matchMedia();
+      // Roll only when motion is welcome; otherwise the CSS reduced-motion rule
+      // parks the wheel centred and static.
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+        // roll left → right across the band
+        tl.fromTo(
+          roller.current,
+          { xPercent: -120 },
+          { xPercent: 520, ease: "none" },
+          0,
+        );
+        // rotate clockwise in proportion to the travel (rolling physics)
+        tl.fromTo(spin.current, { rotation: 0 }, { rotation: 900, ease: "none" }, 0);
       });
-      // roll left → right across the band
-      tl.fromTo(
-        roller.current,
-        { xPercent: -120 },
-        { xPercent: 520, ease: "none" },
-        0,
-      );
-      // rotate clockwise in proportion to the travel (rolling physics)
-      tl.fromTo(spin.current, { rotation: 0 }, { rotation: 900, ease: "none" }, 0);
     }, root);
     return () => ctx.revert();
   }, []);

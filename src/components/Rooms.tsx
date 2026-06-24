@@ -34,13 +34,16 @@ export function Rooms() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".room", {
-        y: 48,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.1,
-        scrollTrigger: { trigger: ".rooms__grid", start: "top 78%" },
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from(".room", {
+          y: 48,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: { trigger: ".rooms__grid", start: "top 78%" },
+        });
       });
     }, root);
     return () => ctx.revert();

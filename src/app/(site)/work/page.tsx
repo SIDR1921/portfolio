@@ -17,10 +17,7 @@ export default async function WorkPage() {
       </header>
 
       {projects.length === 0 ? (
-        <div className="empty">
-          No projects yet. Open <code>/studio</code> → <code>Projects</code> →
-          create one, and it&apos;ll appear here within ~30 seconds.
-        </div>
+        <p className="empty">Selected work, coming soon.</p>
       ) : (
         <div className="work-grid">
           {projects.map((p) => (

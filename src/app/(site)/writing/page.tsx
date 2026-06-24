@@ -19,10 +19,7 @@ export default async function WritingPage() {
       </header>
 
       {posts.length === 0 ? (
-        <div className="empty">
-          No posts yet. Open <code>/studio</code> → <code>Blog posts</code> →
-          publish one, and it&apos;ll appear here within ~30 seconds.
-        </div>
+        <p className="empty">New writing, coming soon.</p>
       ) : (
         <div className="post-list">
           {posts.map((post) => (
