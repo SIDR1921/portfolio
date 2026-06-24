@@ -5,7 +5,7 @@ import { postsQuery } from "@/sanity/lib/queries";
 import type { PostListItem } from "@/sanity/lib/types";
 import { formatDate } from "@/lib/date";
 
-export const metadata: Metadata = { title: "Writing — Siddharth Ray" };
+export const metadata: Metadata = { title: "Writing" };
 export const revalidate = 30;
 
 export default async function WritingPage() {

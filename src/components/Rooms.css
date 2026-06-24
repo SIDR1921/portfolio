@@ -3,16 +3,6 @@
   border-top: 1px solid var(--line);
 }
 
-.rooms__lead {
-  font-size: var(--step-3);
-  max-width: 16ch;
-  margin: 0.6rem 0 clamp(2.5rem, 6vh, 4.5rem);
-}
-.rooms__lead-accent {
-  font-style: italic;
-  color: var(--accent);
-}
-
 .rooms__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));

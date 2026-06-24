@@ -5,7 +5,7 @@ import type { Profile, Job } from "@/sanity/lib/types";
 import { PortableTextBody } from "@/components/PortableTextBody";
 import { formatMonthYear } from "@/lib/date";
 
-export const metadata: Metadata = { title: "About — Siddharth Ray" };
+export const metadata: Metadata = { title: "About" };
 export const revalidate = 30;
 
 export default async function AboutPage() {

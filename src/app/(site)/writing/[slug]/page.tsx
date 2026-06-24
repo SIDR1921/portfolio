@@ -25,10 +25,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await sanityFetch<Post | null>(postBySlugQuery, null, { slug });
-  if (!post) return { title: "Writing — Siddharth Ray" };
+  if (!post) return { title: "Writing" };
   return {
-    title: `${post.title} — Siddharth Ray`,
+    title: post.title,
     description: post.excerpt,
+    alternates: { canonical: `/writing/${slug}` },
     openGraph: { title: post.title, description: post.excerpt, type: "article" },
   };
 }

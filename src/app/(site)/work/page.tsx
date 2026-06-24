@@ -3,7 +3,7 @@ import { sanityFetch } from "@/sanity/lib/fetch";
 import { projectsQuery } from "@/sanity/lib/queries";
 import type { Project } from "@/sanity/lib/types";
 
-export const metadata: Metadata = { title: "Work — Siddharth Ray" };
+export const metadata: Metadata = { title: "Work" };
 export const revalidate = 30;
 
 export default async function WorkPage() {

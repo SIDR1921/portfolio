@@ -11,7 +11,7 @@ export function SiteNav() {
   return (
     <nav className="nav" aria-label="Primary">
       <div className="shell nav__inner">
-        <Link href="/" className="nav__brand">
+        <Link href="/" className="nav__brand" aria-label="Siddharth Ray — home">
           SR
         </Link>
         <ul className="nav__links">

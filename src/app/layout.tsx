@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
+import { siteUrl, siteName, siteDescription, siteTagline } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Siddharth Ray — Portfolio",
-  description:
-    "Siddharth Ray — I build & write things. A portfolio told through the visual language of Odisha.",
-  metadataBase: new URL("https://siddharthray.dev"),
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} — Portfolio`,
+    template: `%s — ${siteName}`,
+  },
+  description: siteDescription,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Siddharth Ray — Portfolio",
-    description: "I build & write things.",
+    title: `${siteName} — Portfolio`,
+    description: siteTagline,
+    url: siteUrl,
+    siteName,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} — Portfolio`,
+    description: siteTagline,
   },
 };
 
