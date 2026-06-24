@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   alternates: { canonical: "/" },
+  verification: {
+    google: "s4Wk8WjvqKjBFvUKucJLrO-5C8d_6BQNMm6xrfH9M2g",
+  },
   openGraph: {
     title: `${siteName} — Portfolio`,
     description: siteTagline,

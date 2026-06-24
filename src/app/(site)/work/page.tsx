@@ -14,10 +14,6 @@ export default async function WorkPage() {
       <header className="page__head">
         <p className="eyebrow">Work</p>
         <h1 className="page__title">Things I&apos;ve built.</h1>
-        <p className="page__lead">
-          Projects, case studies, and the occasional experiment. Add or reorder
-          these anytime from the dashboard — no code required.
-        </p>
       </header>
 
       {projects.length === 0 ? (

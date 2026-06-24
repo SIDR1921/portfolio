@@ -15,11 +15,7 @@ export default async function WritingPage() {
     <main className="page shell">
       <header className="page__head">
         <p className="eyebrow">Writing</p>
-        <h1 className="page__title">Essays &amp; notes.</h1>
-        <p className="page__lead">
-          Long-form thinking, read on a warm palm-leaf page. Published straight
-          from the dashboard.
-        </p>
+        <h1 className="page__title">Scrolls.</h1>
       </header>
 
       {posts.length === 0 ? (

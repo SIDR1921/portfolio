@@ -32,15 +32,7 @@ export default async function AboutPage() {
               (open ? "Open to work" : "Not currently looking")}
           </span>
 
-          {profile?.bio ? (
-            <PortableTextBody value={profile.bio} />
-          ) : (
-            <p>
-              Add your bio and status in <code>/studio</code> →{" "}
-              <code>Profile &amp; status</code>. Flip the “Open to work” toggle
-              and this badge updates live.
-            </p>
-          )}
+          {profile?.bio && <PortableTextBody value={profile.bio} />}
 
           {profile?.links && profile.links.length > 0 && (
             <div className="work-card__links" style={{ marginTop: "1.5rem" }}>
