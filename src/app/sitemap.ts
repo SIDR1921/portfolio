@@ -6,7 +6,7 @@ import { postSlugsQuery } from "@/sanity/lib/queries";
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routes = ["", "/work", "/writing", "/about"].map((path) => ({
+  const routes = ["", "/writing"].map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
