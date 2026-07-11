@@ -4,7 +4,6 @@ const QUALITIES = [
   "Curious to the core",
   "Obsessed with detail",
   "Builds what matters",
-  "Multilingual AI, offline-first",
   "Ships fast, learns faster",
 ];
 
