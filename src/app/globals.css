@@ -61,9 +61,33 @@ svg {
   color: var(--accent);
 }
 
+/* numbered section label — "01 — Ethos" */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+
 .shell {
-  width: min(100% - calc(var(--gutter) * 2), 1240px);
+  width: min(92%, 1280px);
   margin-inline: auto;
+}
+
+/* fixed vignette that deepens the top edge of every screen */
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  background: radial-gradient(
+    130% 100% at 50% 0%,
+    transparent 55%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  mix-blend-mode: multiply;
 }
 
 @media (prefers-reduced-motion: reduce) {

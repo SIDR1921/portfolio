@@ -3,34 +3,36 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { KonarkWheel } from "./KonarkWheel";
-import { SauraFrieze } from "./SauraFrieze";
 import "./Hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
-  const wheel = useRef<SVGGElement>(null);
+  const photo = useRef<HTMLDivElement>(null);
+  const halo = useRef<HTMLImageElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
-      // Only animate when the visitor hasn't asked to reduce motion. With no
-      // animations, every element renders at its natural (visible) state, so
-      // reduced-motion users get a calm, fully-legible page.
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // headline lines rise into place on load
-        gsap.from(".hero__line", {
-          yPercent: 120,
-          opacity: 0,
+        // headline lines mask-reveal upward
+        gsap.set(".hero__line", { yPercent: 118 });
+        gsap.to(".hero__line", {
+          yPercent: 0,
           duration: 1.1,
           ease: "power3.out",
-          stagger: 0.12,
+          stagger: 0.1,
           delay: 0.15,
         });
-
-        // the quote fades up just after the name
+        // eyebrow + quote fade up
+        gsap.from(".hero__eyebrow", {
+          opacity: 0,
+          y: 14,
+          duration: 0.9,
+          ease: "power2.out",
+          delay: 0.35,
+        });
         gsap.from(".hero__quote", {
           opacity: 0,
           y: 18,
@@ -38,22 +40,33 @@ export function Hero() {
           ease: "power2.out",
           delay: 0.7,
         });
-
-        // Saura frieze draws itself in, frame first then figures
-        gsap.set(".saura-stroke", { strokeDasharray: 1, strokeDashoffset: 1 });
-        gsap.to(".saura-stroke", {
-          strokeDashoffset: 0,
-          duration: 1.6,
-          ease: "power1.inOut",
-          stagger: 0.04,
-          delay: 0.5,
+        gsap.from(".hero__frieze", {
+          opacity: 0,
+          y: 20,
+          duration: 1.1,
+          ease: "power2.out",
+          delay: 0.9,
         });
 
-        // the Konark wheel turns as the hero scrolls past
-        if (wheel.current) {
-          gsap.to(wheel.current, {
-            rotation: 220,
+        // wheel photo + line halo rotate on scroll
+        if (photo.current) {
+          gsap.to(photo.current, {
+            rotation: 60,
             ease: "none",
+            transformOrigin: "center",
+            scrollTrigger: {
+              trigger: root.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 1,
+            },
+          });
+        }
+        if (halo.current) {
+          gsap.to(halo.current, {
+            rotation: -80,
+            ease: "none",
+            transformOrigin: "center",
             scrollTrigger: {
               trigger: root.current,
               start: "top top",
@@ -64,31 +77,64 @@ export function Hero() {
         }
       });
     }, root);
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <header className="hero" ref={root}>
-      <div className="hero__wheel" aria-hidden="true">
-        <KonarkWheel ref={wheel} />
+    <header id="top" className="hero" ref={root}>
+      <div className="hero__ember" aria-hidden="true" />
+
+      <div className="hero__wheel" ref={photo} aria-hidden="true">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/konark-wheel.jpg" alt="" className="hero__wheel-img" />
+        <div className="hero__wheel-glow" />
       </div>
 
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/konark-wheel-line.svg"
+        alt=""
+        aria-hidden="true"
+        className="hero__halo"
+        ref={halo}
+      />
+
+      <div className="hero__fade" aria-hidden="true" />
+
       <div className="shell hero__inner">
+        <p className="hero__eyebrow">
+          <span className="hero__eyebrow-rule" />
+          AI &amp; machine learning engineer
+        </p>
+
         <h1 className="hero__title">
           <span className="hero__line-wrap">
-            <span className="hero__line">Siddharth Ray.</span>
+            <span className="hero__line">Siddharth</span>
+          </span>
+          <span className="hero__line-wrap">
+            <span className="hero__line">
+              Ray<span className="hero__dot">.</span>
+            </span>
           </span>
         </h1>
 
         <p className="hero__quote">
-          “Simplicity is the ultimate{" "}
-          <em className="hero__quote-accent">sophistication</em>.”
+          Simplicity is the ultimate{" "}
+          <em className="hero__quote-accent">sophistication</em>.
         </p>
 
         <div className="hero__frieze" aria-hidden="true">
-          <SauraFrieze />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/warli-frieze.png"
+            alt="Warli-style dancing figures over a triangular border"
+          />
         </div>
+      </div>
+
+      <div className="hero__cue" aria-hidden="true">
+        Scroll
+        <span className="hero__cue-line" />
       </div>
     </header>
   );

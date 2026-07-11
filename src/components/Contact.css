@@ -1,0 +1,104 @@
+.contact {
+  position: relative;
+  padding-block: clamp(6rem, 16vh, 12rem);
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+.contact__gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    80% 90% at 50% 120%,
+    rgba(226, 167, 57, 0.18),
+    rgba(181, 83, 42, 0.06) 40%,
+    transparent 68%
+  );
+}
+.contact__watermark {
+  position: absolute;
+  bottom: -42%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(120vw, 900px);
+  opacity: 0.1;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.contact__inner {
+  position: relative;
+  width: min(92%, 1000px);
+  margin-inline: auto;
+  text-align: center;
+}
+.contact__label {
+  margin-bottom: 1.6rem;
+}
+.contact__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  font-size: clamp(2.6rem, 1.5rem + 5vw, 6.5rem);
+  margin: 0;
+  line-height: 0.98;
+}
+.contact__title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.contact__sub {
+  color: var(--text-muted);
+  max-width: 46ch;
+  margin: 1.8rem auto 0;
+  line-height: 1.7;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+}
+.contact__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.6rem;
+}
+.contact__cta,
+.contact__ghost {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 1.7rem;
+  display: inline-block;
+}
+.contact__cta {
+  color: var(--ink);
+  background: var(--accent);
+  transition: transform 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+.contact__cta:hover {
+  transform: translateY(-3px);
+  background: var(--conch);
+  color: var(--ink);
+}
+.contact__ghost {
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  transition: border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+}
+.contact__ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.contact__email {
+  margin-top: 1.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: center;
+}
+.contact__email a {
+  color: var(--text-muted);
+}
+.contact__email a:hover {
+  color: var(--accent);
+}

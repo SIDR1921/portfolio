@@ -1,15 +1,27 @@
 import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
+import { Ethos } from "@/components/Ethos";
 import { WheelDivider } from "@/components/WheelDivider";
-import { Rooms } from "@/components/Rooms";
+import { Work } from "@/components/Work";
+import { CraftIndex } from "@/components/CraftIndex";
+import { Journey } from "@/components/Journey";
+import { Contact } from "@/components/Contact";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ScrollReveals } from "@/components/ScrollReveals";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <WheelDivider label="Konark · the sun's chariot" />
-      <Rooms />
+      <Marquee />
+      <Ethos />
+      <WheelDivider />
+      <Work />
+      <CraftIndex />
+      <Journey />
+      <Contact />
       <SiteFooter />
+      <ScrollReveals />
     </>
   );
 }

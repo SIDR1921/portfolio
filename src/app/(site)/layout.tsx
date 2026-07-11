@@ -7,6 +7,7 @@ import "./site.css";
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <SmoothScroll>
+      <div className="vignette" aria-hidden="true" />
       <SiteNav />
       {children}
     </SmoothScroll>

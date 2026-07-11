@@ -3,27 +3,21 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { KonarkWheel } from "./KonarkWheel";
 import "./WheelDivider.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * The Konark chariot wheel rolls across the page as this band scrolls through
- * the viewport — translation and rotation are linked so it reads as a wheel
- * actually rolling along the ground line. A recurring transition between
- * sections; the temple has 24 of these wheels.
+ * The Konark chariot wheel rolls across the band as it scrolls through the
+ * viewport — translation and rotation linked for real rolling physics.
  */
-export function WheelDivider({ label }: { label?: string }) {
+export function WheelDivider() {
   const root = useRef<HTMLDivElement>(null);
-  const roller = useRef<HTMLDivElement>(null);
-  const spin = useRef<SVGGElement>(null);
+  const roller = useRef<HTMLImageElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
-      // Roll only when motion is welcome; otherwise the CSS reduced-motion rule
-      // parks the wheel centred and static.
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -33,15 +27,13 @@ export function WheelDivider({ label }: { label?: string }) {
             scrub: 1,
           },
         });
-        // roll left → right across the band
+        tl.fromTo(roller.current, { xPercent: -140 }, { xPercent: 560, ease: "none" }, 0);
         tl.fromTo(
           roller.current,
-          { xPercent: -120 },
-          { xPercent: 520, ease: "none" },
+          { rotation: 0 },
+          { rotation: 900, ease: "none", transformOrigin: "center" },
           0,
         );
-        // rotate clockwise in proportion to the travel (rolling physics)
-        tl.fromTo(spin.current, { rotation: 0 }, { rotation: 900, ease: "none" }, 0);
       });
     }, root);
     return () => ctx.revert();
@@ -50,12 +42,16 @@ export function WheelDivider({ label }: { label?: string }) {
   return (
     <div className="wheel-divider" ref={root} aria-hidden="true">
       <div className="wheel-divider__track">
-        <div className="wheel-divider__roller" ref={roller}>
-          <KonarkWheel ref={spin} />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="wheel-divider__roller"
+          ref={roller}
+          src="/konark-wheel-line.svg"
+          alt=""
+        />
       </div>
       <div className="wheel-divider__ground" />
-      {label && <span className="wheel-divider__label">{label}</span>}
+      <span className="wheel-divider__label">Konark · the sun&rsquo;s chariot</span>
     </div>
   );
 }

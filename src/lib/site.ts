@@ -5,4 +5,4 @@ export const siteUrl =
 export const siteName = "Siddharth Ray";
 export const siteTagline = "Simplicity is the ultimate sophistication.";
 export const siteDescription =
-  "Siddharth Ray — builder and writer. A portfolio told through the visual language of Odisha.";
+  "Siddharth Ray — AI & machine learning engineer. Multi-agent AI, edge & offline-first systems, applied ML. A portfolio told through the visual language of Odisha.";

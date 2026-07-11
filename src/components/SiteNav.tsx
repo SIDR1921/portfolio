@@ -1,27 +1,31 @@
-import Link from "next/link";
 import "./SiteNav.css";
 
 const LINKS = [
-  { href: "/work", label: "Work" },
-  { href: "/writing", label: "Writing" },
-  { href: "/about", label: "About" },
+  { href: "/#work", label: "Work" },
+  { href: "/#craft", label: "Craft" },
+  { href: "/#journey", label: "Journey" },
 ];
 
 export function SiteNav() {
   return (
     <nav className="nav" aria-label="Primary">
       <div className="shell nav__inner">
-        <Link href="/" className="nav__brand" aria-label="Siddharth Ray — home">
+        <a href="/#top" className="nav__brand" aria-label="Siddharth Ray — home">
           SR
-        </Link>
+        </a>
         <ul className="nav__links">
           {LINKS.map((l) => (
             <li key={l.href}>
-              <Link href={l.href} className="nav__link">
+              <a href={l.href} className="nav__link">
                 {l.label}
-              </Link>
+              </a>
             </li>
           ))}
+          <li>
+            <a href="/#contact" className="nav__link nav__link--cta">
+              Contact →
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

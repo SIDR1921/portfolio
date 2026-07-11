@@ -1,0 +1,111 @@
+.work {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--line);
+}
+
+.work__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2.4rem, 5vh, 3.6rem);
+}
+.work__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.2rem, 1.5rem + 3vw, 4.2rem);
+  margin: 0;
+  line-height: 1;
+}
+.work__sub {
+  color: var(--text-muted);
+  max-width: 34ch;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.work__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: clamp(1.8rem, 3vw, 2.6rem);
+  background: var(--ink);
+  min-height: 340px;
+  transition: background 0.4s var(--ease-out);
+}
+.work__card:hover {
+  background: var(--ink-soft);
+}
+
+.work__motif path {
+  stroke: var(--accent-warm);
+  transition: stroke 0.4s var(--ease-out);
+}
+.work__card:hover .work__motif path {
+  stroke: var(--accent);
+}
+
+.work__meta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.work__name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+  margin: 0;
+  line-height: 1.05;
+}
+.work__body {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 44ch;
+}
+
+.work__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border: 1px solid rgba(244, 236, 224, 0.16);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.tag--filled {
+  color: var(--ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.work__go {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  transition: transform 0.35s var(--ease-out);
+  display: inline-block;
+}
+.work__card:hover .work__go {
+  transform: translateX(7px);
+}

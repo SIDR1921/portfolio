@@ -4,58 +4,118 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  /* clear the fixed nav at the top, breathe at the bottom */
-  padding-block: clamp(6.5rem, 15vh, 10rem) clamp(3rem, 8vh, 5rem);
+  padding-block: clamp(7rem, 16vh, 11rem) clamp(3rem, 8vh, 5rem);
 }
 
-/* the Konark wheel sits behind the type, bleeding off the right edge */
+.hero__ember {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(62% 62% at 80% 30%, rgba(226, 167, 57, 0.26), transparent 60%),
+    radial-gradient(52% 58% at 93% 68%, rgba(181, 83, 42, 0.18), transparent 62%),
+    radial-gradient(72% 78% at 4% 94%, rgba(46, 58, 92, 0.36), transparent 60%),
+    radial-gradient(130% 95% at 50% -10%, rgba(226, 167, 57, 0.06), transparent 55%);
+}
+
+/* treated Konark photo bleeding off the right edge */
 .hero__wheel {
   position: absolute;
   top: 50%;
-  right: clamp(-32vw, -18vw, -8rem);
-  width: min(92vh, 880px);
+  right: clamp(-30vw, -16vw, -7rem);
+  width: min(86vh, 860px);
   aspect-ratio: 1;
   transform: translateY(-50%);
-  opacity: 0.9;
-  pointer-events: none;
+  z-index: 0;
 }
-.hero__wheel svg {
+.hero__wheel-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: brightness(0.66) contrast(1.08) saturate(0.8) sepia(0.32) hue-rotate(-6deg);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 46%, rgba(0, 0, 0, 0.35) 62%, transparent 74%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 46%, rgba(0, 0, 0, 0.35) 62%, transparent 74%);
+}
+.hero__wheel-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(226, 167, 57, 0.1) 55%, transparent 70%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hero__halo {
+  position: absolute;
+  top: 50%;
+  right: clamp(-30vw, -16vw, -7rem);
+  width: min(86vh, 860px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  z-index: 0;
+  opacity: 0.32;
+  mix-blend-mode: screen;
+}
+
+.hero__fade {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(90deg, var(--ink) 22%, rgba(20, 16, 13, 0.55) 46%, transparent 66%);
 }
 
 .hero__inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 clamp(1.4rem, 4vh, 2.4rem);
+}
+.hero__eyebrow-rule {
+  width: 34px;
+  height: 1px;
+  background: var(--accent);
+  display: inline-block;
 }
 
 .hero__title {
-  font-size: var(--step-4);
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
   margin: 0;
+  font-size: clamp(3.4rem, 2rem + 8.5vw, 10rem);
+  font-optical-sizing: auto;
 }
-
-/* each line masks its own reveal */
 .hero__line-wrap {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.08em;
+  padding-bottom: 0.06em;
 }
 .hero__line {
   display: block;
 }
+.hero__dot {
+  color: var(--accent);
+}
 
-/* the guiding quote, set as an editorial tagline */
 .hero__quote {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: var(--step-2);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.14;
   color: var(--text);
-  max-width: 18ch;
-  margin-top: clamp(1.2rem, 3vh, 2rem);
+  max-width: 19ch;
+  margin: clamp(1.4rem, 3.5vh, 2.2rem) 0 0;
+  font-size: clamp(1.5rem, 1.1rem + 1.7vw, 2.7rem);
 }
 .hero__quote-accent {
   color: var(--accent);
@@ -63,17 +123,66 @@
 }
 
 .hero__frieze {
-  margin-top: clamp(2rem, 5vh, 3.5rem);
-  max-width: 460px;
+  margin-top: clamp(2rem, 5vh, 3.4rem);
+  max-width: 540px;
+}
+.hero__frieze img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero__cue {
+  position: absolute;
+  bottom: clamp(1.4rem, 4vh, 2.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: hero-cue 2.4s ease-in-out infinite;
+}
+.hero__cue-line {
+  width: 1px;
+  height: 26px;
+  background: linear-gradient(var(--conch-dim), transparent);
+}
+
+@keyframes hero-cue {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, 8px);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 720px) {
-  .hero__wheel {
-    right: -40vw;
-    width: 120vw;
-    opacity: 0.45;
+  .hero__wheel,
+  .hero__halo {
+    right: -36vw;
+    width: 118vw;
+  }
+  .hero__halo {
+    opacity: 0.2;
   }
   .hero__frieze {
     max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__cue {
+    animation: none;
   }
 }

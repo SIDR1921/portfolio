@@ -1,0 +1,81 @@
+.ethos {
+  position: relative;
+  padding-block: clamp(6rem, 16vh, 12rem);
+  overflow: hidden;
+}
+
+.ethos__gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(56% 82% at 84% 48%, rgba(46, 58, 92, 0.48), transparent 62%),
+    radial-gradient(40% 54% at 90% 42%, rgba(31, 138, 91, 0.22), transparent 56%),
+    radial-gradient(46% 50% at 82% 60%, rgba(38, 90, 140, 0.18), transparent 60%),
+    radial-gradient(70% 65% at 4% 84%, rgba(226, 167, 57, 0.09), transparent 62%);
+}
+
+.ethos__feather {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  height: min(130%, 960px);
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.94;
+  mix-blend-mode: screen;
+  filter: saturate(1.12) contrast(1.04);
+  -webkit-mask-image: radial-gradient(66% 74% at 44% 42%, #000 28%, rgba(0, 0, 0, 0.55) 56%, transparent 80%);
+  mask-image: radial-gradient(66% 74% at 44% 42%, #000 28%, rgba(0, 0, 0, 0.55) 56%, transparent 80%);
+  pointer-events: none;
+}
+
+.ethos__inner {
+  position: relative;
+  z-index: 2;
+}
+.ethos__label {
+  margin-bottom: 1.6rem;
+}
+
+.ethos__statement {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 1.1rem + 2.1vw, 3.1rem);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  margin: 0;
+  max-width: 22ch;
+  color: var(--text);
+}
+.ethos__statement em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.ethos__body {
+  color: var(--text-muted);
+  max-width: 44ch;
+  margin: 1.9rem 0 0;
+  line-height: 1.7;
+}
+
+.ethos__focus {
+  display: flex;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+  margin-top: 2.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+.ethos__dot {
+  color: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .ethos__feather {
+    opacity: 0.5;
+    right: -30%;
+  }
+}

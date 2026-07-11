@@ -1,14 +1,12 @@
 .nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
-  padding-block: clamp(1.3rem, 2.8vh, 2.2rem);
+  z-index: 90;
+  padding-block: clamp(1.1rem, 2.6vh, 1.9rem);
 }
 
-/* .nav__inner uses .shell, so it lines up with the page content and the
-   links sit a comfortable gutter in from the edge */
 .nav__inner {
   display: flex;
   align-items: center;
@@ -18,12 +16,12 @@
 
 .nav__brand {
   font-family: var(--font-mono);
-  font-size: var(--step--1);
+  font-size: 0.78rem;
   letter-spacing: 0.18em;
   color: var(--text);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  padding: 0.35rem 0.7rem;
+  padding: 0.4rem 0.72rem;
   transition: border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
 }
 .nav__brand:hover {
@@ -33,18 +31,20 @@
 
 .nav__links {
   display: flex;
-  gap: clamp(1.25rem, 2.5vw, 2.4rem);
+  gap: clamp(1.1rem, 2.4vw, 2.3rem);
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .nav__link {
   font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.06em;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  padding-bottom: 2px;
+  padding-bottom: 3px;
   border-bottom: 1px solid transparent;
   transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
   white-space: nowrap;
@@ -52,4 +52,12 @@
 .nav__link:hover {
   color: var(--accent);
   border-color: var(--accent);
+}
+.nav__link--cta {
+  color: var(--accent);
+  border-bottom-color: rgba(226, 167, 57, 0.4);
+}
+.nav__link--cta:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }

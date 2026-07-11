@@ -2,14 +2,19 @@
   /* ── Pigment palette (geru / conch / lamp-black / turmeric / indigo) ──
      Inspired by Odisha's natural-pigment traditions. Representative, not
      a canonical fixed palette (the "fixed five-colour" claim is a myth). */
-  --ink: #1a1411; /* lamp-black — primary ground */
-  --ink-soft: #241c17; /* raised surfaces on the dark ground */
+  --ink: #14100d; /* lamp-black — primary ground (deep) */
+  --ink-soft: #241c17; /* raised surfaces / card hover */
+  --panel: #100c09; /* wheel-divider band */
+  --marquee: #181209; /* marquee band */
   --conch: #f4ece0; /* conch / rice-paste white — primary text on dark */
   --conch-dim: #c9bca9; /* muted text on dark */
   --terracotta: #b5532a;
   --geru: #a23b26; /* deep red-ochre */
   --turmeric: #e2a739; /* accent / the Konark wheel */
   --indigo: #2e3a5c; /* cool counterpoint */
+  --teal-peacock: #1f8a5b; /* ethos gradient only */
+  --teal-blue: #265a8c; /* ethos gradient only */
+  --footer-micro: #7a6f60; /* footer legal line */
 
   /* ── Semantic roles (dark mode is the default canvas) ── */
   --bg: var(--ink);
@@ -18,7 +23,8 @@
   --text-muted: var(--conch-dim);
   --accent: var(--turmeric);
   --accent-warm: var(--terracotta);
-  --line: rgba(244, 236, 224, 0.14); /* hairline on dark */
+  --line: rgba(244, 236, 224, 0.12); /* hairline on dark */
+  --line-strong: rgba(244, 236, 224, 0.18);
 
   /* ── Type ── */
   --font-display: "Fraunces", Georgia, serif;
@@ -37,7 +43,7 @@
   /* ── Rhythm ── */
   --measure: 66ch;
   --gutter: clamp(1.25rem, 4vw, 4rem);
-  --section-y: clamp(5rem, 12vh, 11rem);
+  --section-y: clamp(5rem, 12vh, 9rem);
   --radius: 4px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }

@@ -36,3 +36,7 @@ yarn-error.log*
 !.vscode/extensions.json
 .idea
 *.sw?
+
+# design handoff bundles (kept out of the repo)
+*.zip
+design_handoff_editorial_odisha/
